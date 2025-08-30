@@ -1,6 +1,8 @@
 const EventEmitter = require('events');
-const eventEmitter = new EventEmitter();
+const add = require('./add');
+const multiply = require('./multiply');
 
+const eventEmitter = new EventEmitter();
 const OPERATIONS = ['add', 'multiply'];
 
 let firstNumber = process.argv[2];
@@ -26,11 +28,11 @@ if (isNaN(firstNumber) || isNaN(secondNumber)) {
 }
 
 eventEmitter.on('add', (a, b) => {
-  eventEmitter.emit('result', a + b);
+  eventEmitter.emit('result', add(a, b));
 });
 
 eventEmitter.on('multiply', (a, b) => {
-  eventEmitter.emit('result', a * b);
+  eventEmitter.emit('result', multiply(a, b));
 });
 
 eventEmitter.on('result', (res) => {
