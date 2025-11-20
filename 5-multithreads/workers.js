@@ -20,7 +20,7 @@ function divideArray(array, amount = process.env.UV_THREADPOOL_SIZE) {
 		const end = start + chunkSize;
 		if (i === amount - 1) {
 			chunks.push(array.slice(start));
-			break;;
+			break;
 		}
 		chunks.push(array.slice(start, end));
 	}
